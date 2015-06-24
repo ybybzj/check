@@ -1,16 +1,15 @@
-var t = require('@zj/type');
+var t = require('typology');
 var check = require('./index');
-function check_t(type, msg, val){
-  if(arguments.length === 2){
-    val = msg;
-    msg = 'Invalid Type';
-  }
-  var result = t(val) === type;
-  check(result, !result && _makeErr(msg, type, val));
+function check_t(description, val, msg){
+  msg = msg || 'Invalid Type';
+  var result = t.scan(description, val);
+  check(!result.error, result.error && _makeErr(msg, result));
 }
-function _makeErr(msg, type, val){
-  var err = new TypeError(msg + '\nexpect type "' +type+ '", but given: ' + val);
+function _makeErr(msg, info){
+  var err = new TypeError(msg);
+  err.info = info;
   return err;
 }
 
-module.exports = check_t;
+check.t = check_t;
+module.exports = check;
