@@ -1,5 +1,5 @@
 {
-  "name": "@zj/check",
+  "name": "check",
   "version": "0.2.1",
   "description": "Invariant checking utility",
   "main": "index.js",
@@ -9,11 +9,6 @@
   "author": "jackzj",
   "license": "ISC",
   "dependencies": {
-    "@zj/type": "^0.1.0",
     "typology": "^1.0.0"
-  },
-  "publishConfig": {
-    "scope": "@zj",
-    "registry": "http://npm.qtang.net"
   }
 }
